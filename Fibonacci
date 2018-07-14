@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int Fibonacci(int n) {
+        int ret = 0;
+        int pre = 1;
+        int next = 1;
+        if(n <= 0)
+            return 0;
+        else if(n == 1 || n == 2)
+        {
+            return 1;
+        }
+        else
+        {
+            n-=2;
+            while(n--)
+            {
+                ret = pre + next;
+                pre = next;
+                next = ret;
+            }
+        }
+        return ret;
+    }
+};
