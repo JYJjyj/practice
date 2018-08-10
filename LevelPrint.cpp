@@ -11,12 +11,12 @@ struct TreeNode {
     TreeNode *right;
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
-
 class Solution {
 public:
-    vector<vector <int> > levelOrder(TreeNode* head) {
-        vector<vector <int> > ret;
+    vector<vector<int> > levelOrder(TreeNode *head) {
+         vector<vector <int> > ret;
         queue<TreeNode*> q;
+        queue<TreeNode*> tmp;
         if(head == NULL)
             return ret;
         q.push(head);
@@ -28,11 +28,12 @@ public:
                 TreeNode* front = q.front();
                 v.push_back(front->val);
                 if(front->left) 
-                    q.push(front->left);
+                    tmp.push(front->left);
                 if(front->right)
-                    q.push(front->right);
+                    tmp.push(front->right);
                 q.pop();
             }
+            swap(tmp,q);
             ret.push_back(v);
         }
         return ret;
